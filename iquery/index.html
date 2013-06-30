@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html manifest="system.manifest">
+<!--<html>-->
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="iQuery.js"></script>
+        <style>
+            body{
+                font-family: cursive;
+                font-size: 12px;
+            }
+            img{
+                cursor: pointer;
+            }
+            .rolar{
+                
+            }
+            .detalhes{
+                
+            }
+            .testeClass{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <samp class="testeEmpty">teste</samp><samp class="testeEmpty">teste</samp><samp class="testeEmpty">teste</samp><samp class="testeEmpty">teste</samp><samp class="testeEmpty">teste</samp>
+        <div id="warning">.....</div>
+        <hr/>
+        <table>
+            <tr>
+                <td>
+                    <img src="01.jpg" width="250" alt="Motorola" id="imgObj" data-processor="35Ghz" data-memory="48GB" data-harddrive="16TB" data-screen='45"'>
+                </td>
+                <td>
+                    <span id="processor" class="detalhes"></span><br/>
+                    <span id="memory" class="detalhes"></span><br/>
+                    <span id="harddrive" class="detalhes"></span><br/>
+                    <span id="screen" class="detalhes"></span>
+                </td>
+            </tr>
+        </table>
+        <hr/>
+        <input type="button" class="rolar" id="rolar" value="rolar" data-scroll="aqui">
+        <input type="button" id="rede" value="rede" data-to="warning">
+        <br/>
+        <input type="button" id="rolarNew" value="Rolar com iQuery">
+        
+        
+        <div style="height: 980px;"></div>
+        
+        <div id="aqui"></div>
+        <input type="button" class="rolar" value="rolar" data-scroll="warning">
+        <script>
+            
+//            iQuery
+            
+            $('#warning').html('Testando o metodo HTML');
+            $('.detalhes').html('...');
+            $('.testeEmpty').empty();
+            $('#processor').addClass('testeClass');
+            $('#memory').addClass('testeClass');
+            $('#processor').removeClass('testeClass');
+                       
+            $('#rolarNew').click(function(){
+                $('#aqui').scroll();
+            });
+            
+            $('#rede').click(function(){
+                if($('').onLine){
+                    $('#warning').html('Estamos On-Line...');
+                } else{
+                    $('#warning').html('Estamos Off-Line...');
+                }
+            });
+            
+//            HTML5
+
+            rolar = function(){
+                var destino = this.dataset.scroll;
+                document.getElementById(destino).scrollIntoView();
+            };
+            rolarList = document.getElementsByClassName('rolar');
+            for(i=0;i<rolarList.length;i++){
+                rolarList[i].addEventListener('click', rolar, false);
+            }
+
+            myaction = function(){
+                document.getElementById('processor').innerHTML = this.dataset.processor;
+                document.getElementById('memory').innerHTML = this.dataset.memory;
+                document.getElementById('harddrive').innerHTML = this.dataset.harddrive;
+                document.getElementById('screen').innerHTML = this.dataset.screen;
+            };
+            document.getElementById('imgObj').addEventListener('click', myaction, false);
+        </script>
+    </body>
+</html>
