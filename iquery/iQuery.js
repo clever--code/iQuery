@@ -3,7 +3,8 @@
  * @param {type} me
  * @returns {Object}
  */
-$ = function(me){
+$ = function(){
+	var me = arguments[0];
     var core = {};
     var type = String(me.replace(/^\s+/,'')).substring(0,1);
     var me = me.replace(/^\s+/,'').replace(type,'');
@@ -103,6 +104,6 @@ $ = function(me){
             value : window.navigator.onLine
         }
     );
-
+    
     return core;
-};
+}

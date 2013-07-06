@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html manifest="system.manifest">
-<!--<html>-->
+<!-- <html manifest="system.manifest"> -->
+<html>
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -53,7 +53,7 @@
         <div id="aqui"></div>
         <input type="button" class="rolar" value="rolar" data-scroll="warning">
         <script>
-            
+        
 //            iQuery
             
             $('#warning').html('Testando o metodo HTML');
@@ -68,31 +68,13 @@
             });
             
             $('#rede').click(function(){
-                if($('').onLine){
+                if($.onLine){
                     $('#warning').html('Estamos On-Line...');
                 } else{
                     $('#warning').html('Estamos Off-Line...');
                 }
             });
             
-//            HTML5
-
-            rolar = function(){
-                var destino = this.dataset.scroll;
-                document.getElementById(destino).scrollIntoView();
-            };
-            rolarList = document.getElementsByClassName('rolar');
-            for(i=0;i<rolarList.length;i++){
-                rolarList[i].addEventListener('click', rolar, false);
-            }
-
-            myaction = function(){
-                document.getElementById('processor').innerHTML = this.dataset.processor;
-                document.getElementById('memory').innerHTML = this.dataset.memory;
-                document.getElementById('harddrive').innerHTML = this.dataset.harddrive;
-                document.getElementById('screen').innerHTML = this.dataset.screen;
-            };
-            document.getElementById('imgObj').addEventListener('click', myaction, false);
         </script>
     </body>
 </html>

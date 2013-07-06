@@ -1,0 +1,19 @@
+//            HTML5
+
+            rolar = function(){
+                var destino = this.dataset.scroll;
+                document.getElementById(destino).scrollIntoView();
+            };
+            rolarList = document.getElementsByClassName('rolar');
+            for(i=0;i<rolarList.length;i++){
+                rolarList[i].addEventListener('click', rolar, false);
+            }
+
+            myaction = function(){
+                document.getElementById('processor').innerHTML = this.dataset.processor;
+                document.getElementById('memory').innerHTML = this.dataset.memory;
+                document.getElementById('harddrive').innerHTML = this.dataset.harddrive;
+                document.getElementById('screen').innerHTML = this.dataset.screen;
+            };
+            document.getElementById('imgObj').addEventListener('click', myaction, false);
+            
