@@ -3,8 +3,8 @@
  * @param {type} me
  * @returns {Object}
  */
-$ = function(){
-	var me = arguments[0];
+iQuery = function(){
+	var me = arguments[0]?arguments[0]:'';
     var core = {};
     var type = String(me.replace(/^\s+/,'')).substring(0,1);
     var me = me.replace(/^\s+/,'').replace(type,'');
@@ -99,11 +99,37 @@ $ = function(){
             enumerable : true
         }
     );
+    
+    Object.defineProperty(core, "load", {
+    		value : function(url, data){
+                var formData = new FormData();
+                for(key in data){
+                	formData.append(key, data[key]);
+                }
+                var client = new XMLHttpRequest();
+                client.open("POST", url, true);
+                client.onload = function(){
+                    if(type === '#'){
+                        obj.innerHTML = this.response;
+                    } else{
+                        for(i=0;i<obj.length;i++){
+                            obj[i].innerHTML = this.response;
+                        }
+                    }
+                };
+                client.send(formData);
+    		}
+    	}
+    );
         
     Object.defineProperty(core, "onLine", {
-            value : window.navigator.onLine
+            value : window.navigator.onLine,
+            writable : true,
+            configurable : true,
+            enumerable : true
         }
     );
     
     return core;
 }
+$ = iQuery;

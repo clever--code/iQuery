@@ -4,10 +4,10 @@
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="iQuery.js"></script>
+        <script src="iQuery.js?v=9898989"></script>
         <style>
             body{
-                font-family: cursive;
+                font-family: sans-serif;
                 font-size: 12px;
             }
             img{
@@ -42,8 +42,11 @@
             </tr>
         </table>
         <hr/>
-        <input type="button" id="rede" value="rede" data-to="warning">
         <input type="button" id="rolariQuery" value="Rolar com iQuery">
+        <input type="button" id="rede" value="Rede" data-to="warning">
+        <input type="button" id="post" value="Load">
+        <hr/>
+        <div id="loadExemple"></div>
         
         <div style="height: 980px;"></div>
         
@@ -52,7 +55,7 @@
         <script>
         
 //            iQuery
-            
+
             $('#warning').html('Testando o metodo HTML');
             $('.detalhes').html('...');
             $('.testeEmpty').empty();
@@ -69,7 +72,7 @@
             });
             
             $('#rede').click(function(){
-                if($.onLine){
+                if($().onLine){
                     $('#warning').html('Estamos On-Line...');
                 } else{
                     $('#warning').html('Estamos Off-Line...');
@@ -81,6 +84,10 @@
             	$('#memory').html(this.dataset.memory);
             	$('#harddrive').html(this.dataset.harddrive);
             	$('#screen').html(this.dataset.screen);
+            });
+            
+            $('#post').click(function(){
+            	$('#loadExemple').load('frontcontroller.php',{secret_token:'1234567890', site : 'http://clevercode.com.br/'});
             });
             
         </script>
