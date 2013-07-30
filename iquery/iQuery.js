@@ -3,7 +3,7 @@
  * http://clevercode.com.br/
  * Copyright 2012 CleverCode Foundation
  * 
- * Owner Miller Augusto S. Martins
+ * Charge: Miller Augusto S. Martins, Alex dos Santos Liberato
  * contato@clevercode.com.br
  * 
  * GNU General Public License
@@ -65,7 +65,7 @@
 				formData.append(key, data[key]);
 			}
 			var client = new XMLHttpRequest();
-			client.open("POST", url, true);
+			client.open("GET", url, true);
 			client.onload = function() {
 				for ( var i = 0; i < obj.length; i++) {
 					obj[i].innerHTML = this.response;
