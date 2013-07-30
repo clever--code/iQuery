@@ -62,6 +62,12 @@
             $('#processor').addClass('testeClass');
             $('#memory').addClass('testeClass');
             $('#processor').removeClass('testeClass');
+            
+            $('.detalhes').each(function(data){
+            	console.log($(data).attr('id'));
+            });
+            
+            console.log($('.detalhes').attr('id'));
                        
             $('#rolariQuery').click(function(){
                 $('#aqui').scroll();
@@ -89,7 +95,7 @@
             $('#post').click(function(){
             	$('#loadExemple').load('frontcontroller.php',{secret_token:'1234567890', site : 'http://clevercode.com.br/'});
             });
-            
+
         </script>
     </body>
 </html>
