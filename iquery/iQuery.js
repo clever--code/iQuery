@@ -148,6 +148,6 @@
 	    client.send(uri);
 	};
 
-	window.iQuery = window.$ = iQuery;
+	window.iQuery = window.$i = iQuery;
 	
 })(window);
