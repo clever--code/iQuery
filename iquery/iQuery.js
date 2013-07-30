@@ -113,6 +113,40 @@
 
 		return core;
 	}
+	
+	core.get = function(){
+	    var client = new XMLHttpRequest(),
+	    callback = arguments[(arguments.length-1)];
+	    client.open("GET", arguments[0], true);
+	    client.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	    client.onload = function() {
+		callback(eval('[' + this.response + ']')[0]);
+	    };
+	    var uri = '';
+	    if(arguments.length == 3){
+		for (key in arguments[1]) {
+		    uri += encodeURIComponent(key) + '=' + encodeURIComponent(arguments[1][key]) + '&';
+		}
+	    }
+	    client.send(uri);
+	};
+	
+	core.post = function(){
+	    var client = new XMLHttpRequest(),
+	    callback = arguments[(arguments.length-1)];
+	    client.open("POST", arguments[0], true);
+	    client.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	    client.onload = function() {
+		callback(eval('[' + this.response + ']')[0]);
+	    };
+	    var uri = '';
+	    if(arguments.length == 3){
+		for (key in arguments[1]) {
+		    uri += encodeURIComponent(key) + '=' + encodeURIComponent(arguments[1][key]) + '&';
+		}
+	    }
+	    client.send(uri);
+	};
 
 	window.iQuery = window.$ = iQuery;
 	
