@@ -42,6 +42,8 @@
             </tr>
         </table>
         <hr/>
+        <input type="button" id="btnHide" value="Hide">
+        <input type="button" id="btnShow" value="Show">
         <input type="button" id="rolariQuery" value="Rolar com iQuery">
         <input type="button" id="rede" value="Rede" data-to="warning">
         <input type="button" id="post" value="Load">
@@ -56,6 +58,14 @@
         
 //            iQuery
 
+			$('#btnShow').click(function(){
+				$('#imgObj').fadeIn();
+			});
+			
+			$('#btnHide').click(function(){
+				$('#imgObj').fadeOut();				
+			});
+			
             $('#warning').html('Testando o metodo HTML');
             $('.detalhes').html('...');
             $('.testeEmpty').empty();

@@ -96,6 +96,20 @@
 		core.onLine = function() {
 			return window.navigator.onLine;
 		};
+		
+		core.fadeIn = function(){
+			for ( var i = 0; i < this.length; i++) {
+	            this[i].style.transition = '2s';
+	            this[i].style.opacity = '1';
+			}
+        };
+        
+        core.fadeOut = function(){
+			for ( var i = 0; i < this.length; i++) {
+	            this[i].style.transition = '2s';
+	            this[i].style.opacity = '0';
+			}
+        }; 
 
 		return core;
 	}
