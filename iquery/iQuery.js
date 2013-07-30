@@ -1,7 +1,15 @@
-/*
- * Independence Query
- * @param {type} me
- * @returns {Object}
+/*!
+ * Independence Query Library vBeta
+ * http://clevercode.com.br/
+ * Copyright 2012 CleverCode Foundation
+ * 
+ * Owner Miller Augusto S. Martins
+ * contato@clevercode.com.br
+ * 
+ * GNU General Public License
+ * http://www.gnu.org/licenses/gpl-3.0.en.html
+ * 
+ * Date: 2013-07-29T23:44
  */
 (function(window, undefined) {
 	iQuery = function() {
@@ -86,8 +94,7 @@
 		};
 
 		core.onLine = function() {
-			console.log('funfou');
-			return false;
+			return window.navigator.onLine;
 		};
 
 		return core;
