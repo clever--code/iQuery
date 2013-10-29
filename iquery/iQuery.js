@@ -117,7 +117,7 @@
 			};
 			
 			/*
-			 * Bind an event handler to the “click” JavaScript event, or trigger that event on an element.
+			 * Bind an event handler to the ï¿½clickï¿½ JavaScript event, or trigger that event on an element.
 			 * */
 			this.click = function(callback){
 				if(constructor.length == undefined){
@@ -371,7 +371,7 @@
 			};
 			
 			/*
-			 * Bind an event handler to the “scroll” JavaScript event, or trigger that event on an element.
+			 * Bind an event handler to the ï¿½scrollï¿½ JavaScript event, or trigger that event on an element.
 			 * Scroll link
 			 * */
 			this.scroll = function() {
@@ -385,31 +385,31 @@
 			};
 			
 			/*
-			 * Adds the specified class(es) to each of the set of matched elements.
-			 * */
+			* Adds the specified class(es) to each of the set of matched elements.
+			* */
 			this.addClass = function(data) {
-				if(constructor.length == undefined){
-					this.constructor.className += data;
-				} else{
-					[].map.call(this.constructor, function(obj){
-						obj.constructor.className += data;
-					});
-				}
+	                    if(constructor.length == undefined){
+	                            this.constructor.className += data;
+	                    } else{
+	                            [].map.call(this.constructor, function(obj){
+	                                    obj.className += data;
+	                            });
+	                    }
 			};
-			
+	            
 			/*
-			 * Remove a single class, multiple classes, or all classes from each element in the set of matched elements.
-			 * */
+			* Remove a single class, multiple classes, or all classes from each element in the set of matched elements.
+			* */
 			this.removeClass = function(data){
-				if(constructor.length == undefined){
-					var current = obj.constructor.className;
-					this.constructor.className = current.replace(data,'');
-				} else{
-					[].map.call(this.constructor, function(obj){
-						var current = obj.constructor.className;
-						obj.constructor.className = current.replace(data,'');
-					});
-				}
+	                    if(constructor.length == undefined){
+	                            var current = this.constructor.className;
+	                            this.constructor.className = current.replace(data,'');
+	                    } else{
+	                            [].map.call(this.constructor, function(obj){
+	                                    var current = obj.className;
+	                                    obj.className = current.replace(data,'');
+	                            });
+	                    }
 			};
 			
 			/*
@@ -420,7 +420,7 @@
 					return this.constructor.lastChild;
 				} else{
 					return [].map.call(this.constructor, function(obj){
-						return obj.constructor.lastChild;
+						return obj.lastChild;
 					});
 				}
 			};
