@@ -121,7 +121,7 @@
 			};
 			
 			/*
-			 * Iterate over a jQuery object, executing a function for each matched element.
+			 * Iterate over a object, executing a function for each matched element.
 			 * */
 			this.each = this.forEach = function(callback){
 				[].map.call(this.constructor, function(obj){
@@ -342,7 +342,7 @@
 			};
 			
 			/*
-			 * Retrieve the DOM elements matched by the jQuery object.
+			 * Retrieve the DOM elements matched by the object.
 			 * XMLHttpRequest GET
 			 * */
 			this.get = function(){
@@ -474,7 +474,7 @@
 			};
 			
 			/*
-			 * The number of elements in the jQuery object.
+			 * The number of elements in the object.
 			 * */
 			this.length = function(data){
 				var instance = this;
