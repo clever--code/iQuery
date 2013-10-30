@@ -13,38 +13,53 @@
  */
 
 (function(window) {
-	var N$ = function(){
+	var iQuery = function(){
+		
+		/*
+		 * the builder instance
+		 * */
 		var atributes = {}; try { atributes = (arguments.length == 1)?document.querySelectorAll(arguments[0]):document.querySelectorAll('body'); } catch (e) { atributes = arguments[0]; }
+		
+		/*
+		 * Choose what will be the form of call
+		 * */
+		var definitionOfCall = function(single, multiple){
+			if(this.constructor.length == undefined){
+				single();
+			} else {
+				multiple();
+			}
+		};
+		
+		/*
+		 * Choose what will be the mode of operation
+		 * */		
+		var isCallback = function(args, withCallback, noCallback){
+			if(args.length == 1){
+				noCallback();
+			} else {
+				withCallback();
+			}
+		};
+		
+		/*
+		 * Core executions
+		 * */	
 		var core = function(){
 			this.constructor = arguments[0];
-			
-			this.definitionOfCall = function(isUndefined, isDefined){
-				if(this.constructor.length == undefined){
-					isUndefined();
-				} else {
-					isDefined();
-				}
-			};
-			
-			this.isCallback = function(args){
-				if(args.length == 1){
-					return false;
-				} else {
-					return true;
-				}
-			};
 			
 			/*
 			 * returns the object
 			 * */
 			this.obj = function(){
+				var args = arguments;
 				if(constructor.length == undefined){
 					return this.constructor;
 				} else if(constructor.length == 1){
 					return this.constructor[0];
 				} else{
 					[].map.call(this.constructor, function(obj){
-						arguments[0](obj);
+						args[0](obj);
 					});				
 				}
 			};
@@ -53,56 +68,56 @@
 			 * Get the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.
 			 * */
 			this.html = function(){
-				var current = this;
+				var instance = this;
 				var args = arguments;
-				
-				if(current.isCallback(args)){
-					current.definitionOfCall(function(){
-						current = current.constructor.innerHTML;
+				isCallback(args, function(){
+					definitionOfCall(function(){
+						instance = instance.constructor.innerHTML;
 					}, function(){
-						var data = [].map.call(current.constructor, function(obj){
+						var data = [].map.call(instance.constructor, function(obj){
 							return obj.innerHTML;
 						});
-						current = (data.length === 1?data[0]:data);
+						instance = (data.length === 1?data[0]:data);
 					});
-				} else {
-					current.definitionOfCall(function(){
-						current.constructor.innerHTML = args[0];
+				}, function(){
+					definitionOfCall(function(){
+						instance.constructor.innerHTML = args[0];
 					}, function(){
 						var value = args[0];
-						[].map.call(current.constructor, function(obj){
+						[].map.call(instance.constructor, function(obj){
 							obj.innerHTML = value;
 						});
 					});
-				}
-				
-				return current;
+				});
+				return instance;
 			};
 			
 			/*
 			 * Remove all child nodes of the set of matched elements from the DOM.
 			 * */
 			this.empty = function(){
-				if(constructor.length == undefined){
-					this.constructor.innerHTML = '';
-				} else {
-					[].map.call(this.constructor, function(obj){
+				var instance = this;
+				definitionOfCall(function(){
+					instance.constructor.innerHTML = '';
+				}, function(){
+					[].map.call(instance.constructor, function(obj){
 						obj.innerHTML = '';
 					});
-				}
+				});
 			};
 			
 			/*
 			 * Display or hide the matched elements by animating their opacity.
 			 * */
 			this.toggle = function(){
-				if(constructor.length == undefined){
-					this.constructor.style.display = (this.constructor.style.display === '')?'none':((this.constructor.style.display === 'none')?'inline-block':'none');
-				} else {
-					[].map.call(this.constructor, function(obj){
+				var instance = this;
+				definitionOfCall(function(){
+					instance.constructor.style.display = (instance.constructor.style.display === '')?'none':((instance.constructor.style.display === 'none')?'inline-block':'none');
+				}, function(){
+					[].map.call(instance.constructor, function(obj){
 						obj.style.display = (obj.style.display === '')?'none':((obj.style.display === 'none')?'inline-block':'none');
 					});
-				}
+				});
 			};
 			
 			/*
@@ -118,36 +133,36 @@
 			 * Get the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.
 			 * */
 			this.attr = function(){
-				var atribute;
-				if(constructor.length == undefined){
-					if(arguments.length == 2){
-						atribute = [arguments[0], arguments[1]];
-						this.constructor.setAttribute(atribute[0],atribute[1]);
-					} else{
-						return this.constructor.getAttribute(arguments[0]);
-					}
-				} else{
-					if(arguments.length == 2){
-						atribute = [arguments[0], arguments[1]];
-						[].map.call(this.constructor, function(obj){ obj.setAttribute(atribute[0],atribute[1]); });
-					} else{
-						atribute = arguments[0];
-						return [].map.call(this.constructor, function(obj){ return obj.getAttribute(atribute); });
-					}
-				}
+				var instance = this;
+				var args = arguments;
+				isCallback(args, function(){
+					definitionOfCall(function(){
+						instance.constructor.setAttribute(args[0],args[1]);
+					}, function(){
+						[].map.call(instance.constructor, function(obj){ obj.setAttribute(args[0],args[1]); });
+					});
+				}, function(){
+					definitionOfCall(function(){
+						instance = instance.constructor.getAttribute(args[0]);
+					}, function(){
+						instance = [].map.call(instance.constructor, function(obj){ return obj.getAttribute(args[0]); });
+					});
+				});
+				return instance;
 			};
 			
 			/*
 			 * Bind an event handler to the �click� JavaScript event, or trigger that event on an element.
 			 * */
 			this.click = function(callback){
-				if(constructor.length == undefined){
-					this.constructor.addEventListener('click', callback);
-				} else {
-					[].map.call(this.constructor, function(obj){
+				var instance = this;
+				definitionOfCall(function(){
+					constructor.addEventListener('click', callback);
+				}, function(){
+					[].map.call(instance.constructor, function(obj){
 						obj.addEventListener('click', callback);
 					});
-				}
+				});
 			};
 			
 			/*
@@ -155,13 +170,14 @@
 			 * */
 			this.live = function(){
 				var innerAction = function(events, callback){
-					if(constructor.length == undefined){
-						this.constructor.addEventListener(events, callback);
-					} else {
-						[].map.call(this.constructor, function(obj){
+					var instance = this;
+					definitionOfCall(function(){
+						instance.constructor.addEventListener(events, callback);
+					}, function(){
+						[].map.call(instance.constructor, function(obj){
 							obj.addEventListener(events, callback);
 						});
-					}
+					});
 				};
 				if(arguments.length <=2){
 					var events = arguments[0];
@@ -180,13 +196,14 @@
 			 * Display the matched elements.
 			 * */
 			this.show = function(){
-				if(constructor.length == undefined){
-					this.constructor.style.display = 'inline-block';
-				} else{
-					[].map.call(this.constructor, function(obj){
+				var instance = this;
+				definitionOfCall(function(){
+					instance.constructor.style.display = 'inline-block';
+				}, function(){
+					[].map.call(instance.constructor, function(obj){
 						obj.style.display = 'inline-block';
 					});
-				}
+				});
 			};
 			
 			/*
@@ -194,32 +211,34 @@
 			 * */
 			this.fadeIn = function(){
 				var timer = (arguments[0] != undefined)?'2s':'0.4s';
-				if(constructor.length == undefined){
-					this.constructor.style.transition = timer;
-					this.style.WebkitTransition = 'opacity ' + timer;
-					this.style.MozTransition = 'opacity ' + timer;
-					this.constructor.style.opacity = '1';
-				} else{
-					[].map.call(this.constructor, function(obj){
+				var instance = this;
+				definitionOfCall(function(){
+					instance.constructor.style.transition = timer;
+					instance.style.WebkitTransition = 'opacity ' + timer;
+					instance.style.MozTransition = 'opacity ' + timer;
+					instance.constructor.style.opacity = '1';
+				}, function(){
+					[].map.call(instance.constructor, function(obj){
 						obj.style.transition = timer;
 						obj.style.WebkitTransition = 'opacity ' + timer;
 						obj.style.MozTransition = 'opacity ' + timer;
 						obj.style.opacity = '1';
 					});
-				}
+				});
 			};
 			
 			/*
 			 * Hide the matched elements.
 			 * */
 			this.hide = function(){
-				if(constructor.length == undefined){
-					this.constructor.style.display = 'none';
-				} else{
-					[].map.call(this.constructor, function(obj){
+				var instance = this;
+				definitionOfCall(function(){
+					instance.constructor.style.display = 'none';
+				}, function(){
+					[].map.call(instance.constructor, function(obj){
 						obj.style.display = 'none';
 					});
-				}
+				});
 			};
 			
 			/*
@@ -227,30 +246,32 @@
 			 * */
 			this.fadeOut = function(){
 				var timer = (arguments[0] != undefined)?'2s':'0.4s';
-				if(constructor.length == undefined){
-					this.constructor.style.transition = timer;
-					this.style.WebkitTransition = 'opacity ' + timer;
-					this.style.MozTransition = 'opacity ' + timer;
-					this.constructor.style.opacity = '0';
-				} else{
-					[].map.call(this.constructor, function(obj){
+				var instance = this;
+				definitionOfCall(function(){
+					instance.constructor.style.transition = timer;
+					instance.style.WebkitTransition = 'opacity ' + timer;
+					instance.style.MozTransition = 'opacity ' + timer;
+					instance.constructor.style.opacity = '0';
+				}, function(){
+					[].map.call(instance.constructor, function(obj){
 						obj.style.transition = timer;
 						obj.style.WebkitTransition = 'opacity ' + timer;
 						obj.style.MozTransition = 'opacity ' + timer;
 						obj.style.opacity = '0';
 					});
-				}
+				});
 			};
 			
 			/*
 			 * Get the parent of each element in the current set of matched elements, optionally filtered by a selector.
 			 * */
 			this.parent = function(){
-				if(constructor.length == undefined){
-					return this.constructor.parentNode;
-				} else{
-					return this.constructor[0].parentNode;
-				}
+				var instance = this;
+				definitionOfCall(function(){
+					return instance.constructor.parentNode;
+				}, function(){
+					return instance.constructor[0].parentNode;
+				});
 			};
 			
 			/*
@@ -287,14 +308,16 @@
 			 * Get the current value of the first element in the set of matched elements or set the value of every matched element.
 			 * */
 			this.val = function(){
-				if(constructor.length == undefined){
-					return this.constructor.value;
-				} else{
-					var data = [].map.call(this.constructor, function(obj){
+				var instance = this;
+				definitionOfCall(function(){
+					return instance.constructor.value;
+				}, function(){
+					var data = [].map.call(instance.constructor, function(obj){
 						return obj.value;
 					});
-					return (data.length === 1?data[0]:data);
-				}
+					instance = (data.length === 1?data[0]:data);
+				});
+				return instance;
 			};
 			
 			/*
@@ -396,65 +419,70 @@
 			 * Scroll link
 			 * */
 			this.scroll = function() {
-				if(constructor.length == undefined){
-					this.constructor.scrollIntoView();
-				} else{
-					[].map.call(this.constructor, function(obj){
+				var instance = this;
+				definitionOfCall(function(){
+					instance.constructor.scrollIntoView();
+				}, function(){
+					[].map.call(instance.constructor, function(obj){
 						obj.scrollIntoView();
 					});
-				}
+				});
 			};
 			
 			/*
 			* Adds the specified class(es) to each of the set of matched elements.
 			* */
 			this.addClass = function(data) {
-	                    if(constructor.length == undefined){
-	                            this.constructor.className += data;
-	                    } else{
-	                            [].map.call(this.constructor, function(obj){
-	                                    obj.className += data;
-	                            });
-	                    }
+				var instance = this;
+				definitionOfCall(function(){
+					instance.constructor.className += ' ' + data;
+				}, function(){
+					[].map.call(instance.constructor, function(obj){
+						obj.className += ' ' + data;
+					});
+				});
 			};
 	            
 			/*
 			* Remove a single class, multiple classes, or all classes from each element in the set of matched elements.
 			* */
 			this.removeClass = function(data){
-	                    if(constructor.length == undefined){
-	                            var current = this.constructor.className;
-	                            this.constructor.className = current.replace(data,'');
-	                    } else{
-	                            [].map.call(this.constructor, function(obj){
-	                                    var current = obj.className;
-	                                    obj.className = current.replace(data,'');
-	                            });
-	                    }
+				var instance = this;
+				definitionOfCall(function(){
+					var current = instance.constructor.className;
+					this.constructor.className = current.replace(data,'');
+				}, function(){
+					[].map.call(instance.constructor, function(obj){
+						var current = obj.className;
+						obj.className = current.replace(data,'');
+					});
+				});
 			};
 			
 			/*
 			 * Selects all elements that are the last child of their parent.
 			 * */
 			this.lastChild = function(data){
-				if(constructor.length == undefined){
-					return this.constructor.lastChild;
-				} else{
-					return [].map.call(this.constructor, function(obj){
+				var instance = this;
+				definitionOfCall(function(){
+					return instance.constructor.lastChild;
+				}, function(){
+					return [].map.call(instance.constructor, function(obj){
 						return obj.lastChild;
 					});
-				}
+				});
 			};
 			
 			/*
 			 * The number of elements in the jQuery object.
 			 * */
 			this.length = function(data){
-				if(constructor.length == undefined){
+				var instance = this;
+				definitionOfCall(function(){
 					return undefined;
-				} else{
-					return this.constructor.length;
-				}
+				}, function(){
+					return instance.constructor.length;
+				});
 			};
 			
 			/*
@@ -468,5 +496,7 @@
 		};
 		return core(atributes);
 	};
-	window.$ = window.$i = window.N$ = window.$b = window.iQuery = window.NQuery = window.butchery = N$;
+	
+	window.$i = window.iQuery = iQuery;
+	[].map.call(document.querySelectorAll('script'), function(src){ if(src.dataset.symbol != undefined){ new Function('window.' + src.dataset.symbol + ' = iQuery;')(); } });
 })(window);

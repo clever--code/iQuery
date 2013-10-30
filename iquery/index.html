@@ -4,7 +4,7 @@
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="iQuery.js"></script>
+        <script data-symbol="$" src="iQuery.js"></script>
         <style>
             body{
                 font-family: sans-serif;
@@ -66,7 +66,7 @@
 				$('#imgObj').fadeOut();				
 			});
 			
-            $('#warning').html('Testando o metodo HTML');
+            $('#warning').html('Testing the method HTML');
             $('.detalhes').html('...');
             $('.testeEmpty').empty();
             $('#processor').addClass('testeClass');
@@ -74,10 +74,10 @@
             $('#processor').removeClass('testeClass');
             
             $('.detalhes').each(function(data){
-            	console.log($(data).attr('id'));
+            	console.log('id: ', $(data).attr('id'));
             });
             
-            console.log($('.detalhes').attr('id'));
+            console.log('.detalhes: ', $('.detalhes').attr('id'));
                        
             $('#rolariQuery').click(function(){
                 $('#aqui').scroll();
@@ -101,20 +101,22 @@
             	$('#harddrive').html(this.dataset.harddrive);
             	$('#screen').html(this.dataset.screen);
             	
-            	console.log($('span').html());
+            	console.log('spans: ', $('span').html());
             });
             
             $('#post').click(function(){
             	$('#loadExemple').load('testRequest/frontcontroller.php',{secret_token:'1234567890', site : 'http://clevercode.com.br/'});
             });
             
-//             $('#warning').live('mouseover', 'dblclick', function(){
-//             	alert('Yes!');
-//             });
+            $('#warning').live(/*'mouseover',*/ 'dblclick', function(){
+            	alert('Yes!');
+            });
             
-            console.log($('span').html());
+            console.log('spans: ', $('span').html());
             
-            console.log($(window).onLine());
+            console.log('is online? ', $(window).onLine());
+            
+            console.log('inputs: ', $('input').val());
         </script>
     </body>
 </html>
