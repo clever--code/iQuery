@@ -59,7 +59,7 @@
 			};
 			
 			/*
-			 * Remove all of the callbacks from a list.
+			 * Remove all child nodes of the set of matched elements from the DOM.
 			 * */
 			this.empty = function(){
 				if(constructor.length == undefined){
