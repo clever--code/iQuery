@@ -18,6 +18,22 @@
 		var core = function(){
 			this.constructor = arguments[0];
 			
+			this.definitionOfCall = function(isUndefined, isDefined){
+				if(this.constructor.length == undefined){
+					isUndefined();
+				} else {
+					isDefined();
+				}
+			};
+			
+			this.isCallback = function(args){
+				if(args.length == 1){
+					return false;
+				} else {
+					return true;
+				}
+			};
+			
 			/*
 			 * returns the object
 			 * */
@@ -37,25 +53,30 @@
 			 * Get the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.
 			 * */
 			this.html = function(){
-				if(constructor.length == undefined){
-					if(arguments.length == 1){
-						this.constructor.innerHTML = arguments[0];
-					} else{
-						return this.constructor.innerHTML;
-					}
-				} else {
-					if(arguments.length == 1){
-						var value = arguments[0];
-						[].map.call(this.constructor, function(obj){
-							obj.innerHTML = value;
-						});
-					} else{
-						var data = [].map.call(this.constructor, function(obj){
+				var current = this;
+				var args = arguments;
+				
+				if(current.isCallback(args)){
+					current.definitionOfCall(function(){
+						current = current.constructor.innerHTML;
+					}, function(){
+						var data = [].map.call(current.constructor, function(obj){
 							return obj.innerHTML;
 						});
-						return (data.length === 1?data[0]:data);
-					}
+						current = (data.length === 1?data[0]:data);
+					});
+				} else {
+					current.definitionOfCall(function(){
+						current.constructor.innerHTML = args[0];
+					}, function(){
+						var value = args[0];
+						[].map.call(current.constructor, function(obj){
+							obj.innerHTML = value;
+						});
+					});
 				}
+				
+				return current;
 			};
 			
 			/*
