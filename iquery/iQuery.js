@@ -430,6 +430,27 @@
 			};
 			
 			/*
+			 * Returns the number of pixels to scroll existing x
+			 * */
+			this.scrollX = function(value){
+				return this.top.scrollX;
+			};
+			
+			/*
+			 * Returns the number of pixels to scroll existing y
+			 * */
+			this.scrollY = function(value){
+				return this.top.scrollY;
+			};
+			
+			/*
+			 * Checks whether the scroll position are top is greater than the value reported
+			 * */
+			this.factScrollTopAfter = function(value){
+				return (this.top.scrollY >= value);
+			};
+			
+			/*
 			* Adds the specified class(es) to each of the set of matched elements.
 			* */
 			this.addClass = function(data) {
@@ -486,10 +507,10 @@
 			};
 			
 			/*
-			 * checks if this online
+			 * Checks if this online
 			 * */
 			this.onLine = function(){
-				return window.navigator.onLine;
+				return this.navigator.onLine;
 			};
 			
 			return this;
