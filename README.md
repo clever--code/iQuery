@@ -11,6 +11,51 @@ Use date symbol informing the operator, eg $ operator that is used by jQuery
 `<script data-symbol="$" src="iQuery.js"></script>`
 ***
 
+See the documentation through the link
+https://github.com/clever--code/iQuery/wiki/API-Documentation
+
+
+The methods are implemented:
+-
+
+- .obj()
+- .html()
+- .empty()
+- .toggle()
+- .each()
+- .attr()
+- .click()
+- .live()
+- .show()
+- .fadeIn()
+- .hide()
+- .fadeOut()
+- .parent()
+- .googleChart()
+- .val()
+- .post()
+- .get()
+- .load()
+- .ajax()
+- .scroll()
+- .scrollX()
+- .scrollY()
+- .scrollByPages()
+- .scrollByLines()
+- .scrollTo()
+- .scrollBy()
+- .factScrollTopAfter()
+- .addClass()
+- .removeClass()
+- .lastChild()
+- .length()
+- .onLine()
+
+***
+
+Technical and institutional
+-
+
 iQuery - Independent querys to DOM elements
 
 * Independence Query Library vBeta
