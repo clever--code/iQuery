@@ -475,7 +475,7 @@
 				}, function(){
 					[].map.call(instance.constructor, function(obj){
 						var current = obj.className;
-						obj.className = current.replace(data,'');
+						obj.className = current.replace(data,'').trim();
 					});
 				});
 			};
