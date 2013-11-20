@@ -432,15 +432,43 @@
 			/*
 			 * Returns the number of pixels to scroll existing x
 			 * */
-			this.scrollX = function(value){
+			this.scrollX = function(){
 				return this.top.scrollX;
 			};
 			
 			/*
 			 * Returns the number of pixels to scroll existing y
 			 * */
-			this.scrollY = function(value){
+			this.scrollY = function(){
 				return this.top.scrollY;
+			};
+			
+			/*
+			 * Scrolls the current document by the specified number of pages
+			 * */
+			this.scrollByPages = function(value){
+				return this.top.scrollByPages(value);
+			};
+			
+			/*
+			 * Scrolls the document by the given number of lines
+			 * */
+			this.scrollByLines = function(lines){
+				return this.top.scrollByLines(lines);
+			};
+			
+			/*
+			 * Scrolls the window to a particular place in the document
+			 * */
+			this.scrollTo = function(xCoord, yCoord){
+				return this.top.scroll(xCoord, yCoord);
+			};
+			
+			/*
+			 * Scrolls the document in the window by the given amount
+			 * */
+			this.scrollBy = function(x, y){
+				return this.top.scrollBy(x, y);
 			};
 			
 			/*
