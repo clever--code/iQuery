@@ -10,6 +10,8 @@
  * http://www.gnu.org/licenses/gpl-3.0.en.html
  * 
  * Date: 2013-07-29T23:44
+ * 
+ * http://closure-compiler.appspot.com/
  */
 
 (function(window) {
