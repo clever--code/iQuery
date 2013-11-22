@@ -53,6 +53,7 @@ The methods are implemented:
 - .lastChild()
 - .length()
 - .onLine()
+- .desktopDragOut(MIMETYPE, FILENAME)
 
 ***
 
