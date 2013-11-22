@@ -49,6 +49,7 @@ The methods are implemented:
 - .factScrollTopAfter()
 - .addClass()
 - .removeClass()
+- .toggleClass()
 - .lastChild()
 - .length()
 - .onLine()
