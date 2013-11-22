@@ -486,10 +486,10 @@
 			this.addClass = function(data) {
 				var instance = this;
 				definitionOfCall(function(){
-					instance.constructor.className += ' ' + data;
+					instance.constructor.classList.add(data);
 				}, function(){
 					[].map.call(instance.constructor, function(obj){
-						obj.className += ' ' + data;
+						obj.classList.add(data);
 					});
 				});
 			};
@@ -500,12 +500,24 @@
 			this.removeClass = function(data){
 				var instance = this;
 				definitionOfCall(function(){
-					var current = instance.constructor.className;
-					this.constructor.className = current.replace(data,'');
+					instance.constructor.classList.remove(data);
 				}, function(){
 					[].map.call(instance.constructor, function(obj){
-						var current = obj.className;
-						obj.className = current.replace(data,'').trim();
+						obj.classList.remove(data);
+					});
+				});
+			};
+			
+			/*
+			 * Toggle a single class, multiple classes, or all classes from each element in the set of matched elements.
+			 * */
+			this.toggleClass = function(data){
+				var instance = this;
+				definitionOfCall(function(){
+					instance.constructor.classList.toggle(data);
+				}, function(){
+					[].map.call(instance.constructor, function(obj){
+						obj.classList.toggle(data);
 					});
 				});
 			};
