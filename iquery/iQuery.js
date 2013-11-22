@@ -579,6 +579,23 @@
 				});
 			};
 			
+			/*
+			 * Alert
+			 * */
+			this.alert = function(){
+				var sysConfig = {
+									"img":(arguments[0].img!=undefined)?arguments[0].img:'',
+									"title":(arguments[0].title!=undefined)?arguments[0].title:'',
+									"text":(arguments[0].text!=undefined)?arguments[0].text:'',
+								};
+				window.webkitNotifications.requestPermission();
+			    if (window.webkitNotifications.checkPermission() == 0) {
+			    	window.webkitNotifications.createNotification(sysConfig.img, sysConfig.title, sysConfig.text).show(); 
+			    } else {
+			    	alert(sysConfig.title + '\n' + sysConfig.text);
+			    }
+			};
+			
 			return this;
 		};
 		return core(atributes);
