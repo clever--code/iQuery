@@ -4,18 +4,21 @@
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script data-symbol="$" src="iQuery.js"></script>
+        <script data-symbol="$" src="iQuery.mini.js"></script>
         <style>
-            body{
-                font-family: sans-serif;
-                font-size: 12px;
-            }
-            img{
-                cursor: pointer;
-            }
-            .testeClass{
-                color: red;
-            }
+			body {
+				font-family: sans-serif;
+				font-size: 12px;
+			}
+			
+			img {
+				cursor: pointer;
+			}
+			
+			.testeClass {
+				color: red;
+			}
+			
 			.btn {
 				display: inline-block;
 				padding: 6px 12px;
@@ -36,22 +39,162 @@
 				-o-user-select: none;
 				user-select: none;
 			}
+			
 			.btn-default {
 				color: #333;
 				background-color: #fff;
 				border-color: #ccc;
 			}
+			
 			.btn-primary {
 				color: #fff;
 				background-color: #428bca;
 				border-color: #357ebd;
 			}
+			
 			.btn-danger {
 				color: #fff;
 				background-color: #d9534f;
 				border-color: #d43f3a;
 			}
-        </style>
+			
+			.ui.items {
+				margin: 1em 0 0;
+			}
+			
+			.ui.items:after {
+				display: block;
+				content: ' ';
+				height: 0;
+				clear: both;
+				overflow: hidden;
+				visibility: hidden;
+			}
+			
+			.ui.items>.item {
+				display: block;
+				float: left;
+				position: relative;
+				top: 0;
+				width: 150px;
+				min-height: 200px;
+				margin: 0 .5em 2.5em;
+				padding: 0;
+				background-color: #FFF;
+				line-height: 1.2;
+				font-size: 1em;
+				-webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
+				box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
+				border-bottom: .2em solid rgba(0, 0, 0, .2);
+				border-radius: .33em;
+				-webkit-transition: -webkit-box-shadow .2s ease;
+				transition: box-shadow .2s ease;
+				padding: .5em;
+			}
+			
+			.ui.items .item>.image {
+				display: block;
+				position: relative;
+				background-color: rgba(0, 0, 0, .05);
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-ms-box-sizing: border-box;
+				box-sizing: border-box;
+				border-radius: .2em;
+			}
+			
+			.ui.items .item>.image>img {
+				display: block;
+				width: 100%;
+			}
+			
+			ui.items>.item {
+				line-height: 1.2;
+				font-size: 1em;
+			}
+			
+			.ui.corner.label {
+				background-color: transparent;
+				position: absolute;
+				top: 0;
+				right: 0;
+				z-index: 10;
+				margin: 0;
+				font-size: .8125em;
+				width: 2rem;
+				height: 2rem;
+				padding: 0;
+				text-align: center;
+				-webkit-transition: color .2s ease;
+				transition: color .2s ease;
+			}
+			
+			.ui.label {
+				display: inline-block;
+				vertical-align: middle;
+				margin: -.25em .25em 0;
+				background-color: #E8E8E8;
+				border-color: #E8E8E8;
+				padding: .5em .8em;
+				color: rgba(0, 0, 0, .65);
+				text-transform: uppercase;
+				font-weight: 400;
+				border-radius: .325em;
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				-ms-box-sizing: border-box;
+				box-sizing: border-box;
+				-webkit-transition: background .1s linear;
+				transition: background .1s linear;
+			}
+			
+			.ui.corner.label:after {
+				position: absolute;
+				content: "";
+				right: 0;
+				top: 0;
+				z-index: -1;
+				width: 0;
+				height: 0;
+				border-top: 0 solid transparent;
+				border-right: 3em solid transparent;
+				border-bottom: 3em solid transparent;
+				border-left: 0 solid transparent;
+				border-right-color: inherit;
+				-webkit-transition: border-color .2s ease;
+				transition: border-color .2s ease;
+			}
+			
+			.ui.items .item>.content {
+				padding: .75em .5em;
+			}
+			
+			.ui.items .item>.content>.name {
+				display: block;
+				font-size: 1.25em;
+				font-weight: 700;
+				margin-bottom: .2em;
+				color: rgba(0, 0, 0, .7);
+			}
+			
+			.ui.items .item>.content>.description {
+				clear: both;
+				margin: 0;
+				color: rgba(0, 0, 0, .45);
+			}
+			
+			.ui.items .item .extra {
+				position: absolute;
+				width: 100%;
+				padding: 0 .5em;
+				bottom: -2em;
+				left: 0;
+				height: 1.5em;
+				color: rgba(0, 0, 0, .25);
+				-webkit-transition: color .2s ease;
+				transition: color .2s ease;
+			}
+		</style>
     </head>
     <body>
         <samp class="testeEmpty">test</samp><samp class="testeEmpty">test</samp><samp class="testeEmpty">test</samp><samp class="testeEmpty">test</samp><samp class="testeEmpty">test</samp>
@@ -75,9 +218,9 @@
         <input type="button" id="btnShow" value="Show">
         <input type="button" id="rolariQuery" value="Rolar com iQuery">
         <input type="button" id="rede" value="Rede" data-to="warning">
-        <input type="button" id="post" value="Load">
+        <input type="button" id="post" value="Load Star Gazers">
         <hr/>
-        <div id="loadExemple"></div>
+        <div id="loadExemple" class="ui items"></div>
         
         <div style="height: 980px;"></div>
         
@@ -146,7 +289,13 @@
             });
             
             $('#post').click(function(){
-            	$('#loadExemple').load('testRequest/frontcontroller.php',{secret_token:'1234567890', site : 'http://clevercode.com.br/'});
+				$().get('https://api.github.com/repos/clever--code/iQuery/stargazers', function(json){
+					var stargazers = '';
+					json.forEach(function(obj){
+						stargazers += '<div class="item"><div class="image"><img src="' + obj.avatar_url + '"><a class="like ui corner label" href="' + obj.html_url + '" target="_blank"><i class="like icon"></i></a></div><div class="content"><div class="name">' + obj.login + '</div><p class="description">' + obj.html_url + '</p><div class="extra"></div></div></div>';
+					});
+					$('#loadExemple').html(stargazers);
+				});
             });
             
             $('#warning').live(/*'mouseover',*/ 'dblclick', function(){
