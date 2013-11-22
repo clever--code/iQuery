@@ -555,6 +555,30 @@
 				return this.navigator.onLine;
 			};
 			
+			/*
+			 * Drag files out onto the desktop
+			 * */
+			this.desktopDragOut = function(MIMETYPE, FILENAME){
+				var instance = this;
+				definitionOfCall(function(){
+					instance.constructor.setAttribute('data-downloadurl', MIMETYPE + ':' + FILENAME + ':' + (instance.constructor.getAttribute('href') != undefined? instance.constructor.getAttribute('href'):(instance.constructor.getAttribute('src') != undefined? instance.constructor.getAttribute('src'):(""))));
+					instance.constructor.setAttribute('draggable','true');
+					instance.constructor.addEventListener('dragstart', function(e) {
+					    e.dataTransfer.setData('DownloadURL', this.dataset.downloadurl);
+					}, false);
+				}, function(){
+					[].map.call(instance.constructor, function(file){
+						(function() {
+							file.setAttribute('data-downloadurl', MIMETYPE + ':' + FILENAME + ':' + (file.getAttribute('href') != undefined? file.getAttribute('href'):(file.getAttribute('src') != undefined? file.getAttribute('src'):(""))));
+							file.setAttribute('draggable', 'true');
+							file.addEventListener('dragstart', function(evt) {
+								evt.dataTransfer.setData('DownloadURL', file.getAttribute('data-downloadurl'));
+							}, false);
+						})();
+					});
+				});
+			};
+			
 			return this;
 		};
 		return core(atributes);
