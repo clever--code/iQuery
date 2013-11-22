@@ -10,7 +10,7 @@ Use date symbol informing the operator, eg $ operator that is used by jQuery
 
 `<script data-symbol="$" src="iQuery.js"></script>`<br/>
 Or<br/>
-`<script data-symbol="$" src="http://clever--code.github.io/iQuery/iquery-1.3.mini.js"></script>`
+`<script data-symbol="$" src="http://clever--code.github.io/iQuery/iquery-1.5.mini.js"></script>`
 ***
 
 See the documentation through the link
