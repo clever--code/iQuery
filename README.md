@@ -39,6 +39,7 @@ The methods are implemented:
 - .get()
 - .load()
 - .ajax()
+- .onScroll()
 - .scroll()
 - .scrollX()
 - .scrollY()
