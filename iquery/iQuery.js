@@ -426,7 +426,7 @@
 			};
 			
 			/*
-			 * Bind an event handler to the �scroll� JavaScript event, or trigger that event on an element.
+			 * Bind an event handler to the 'scroll' JavaScript event, or trigger that event on an element.
 			 * Scroll link
 			 * */
 			this.scroll = function() {
