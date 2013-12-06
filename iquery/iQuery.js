@@ -417,6 +417,15 @@
 			};
 			
 			/*
+			 * Performs an action whenever it is made ​​a scroll on the screen
+			 * */
+			this.onScroll = function(callback){
+				window.addEventListener("scroll", function(evt) {
+					callback(evt);
+				});
+			};
+			
+			/*
 			 * Bind an event handler to the �scroll� JavaScript event, or trigger that event on an element.
 			 * Scroll link
 			 * */
