@@ -337,7 +337,7 @@
 			    var uri = '';
 			    if(arguments.length == 3){
 					for (key in arguments[1]) {
-					    uri += encodeURIComponent(key) + '=' + encodeURIComponent(escape(arguments[1][key])) + '&';
+					    uri += encodeURIComponent(key) + '=' + escape(encodeURIComponent(arguments[1][key])) + '&';
 					}
 			    }
 			    client.send(uri);
@@ -358,7 +358,7 @@
 			    var uri = '';
 			    if(arguments.length == 3){
 			    	for (key in arguments[1]) {
-			    		uri += encodeURIComponent(key) + '=' + encodeURIComponent(escape(arguments[1][key])) + '&';
+			    		uri += encodeURIComponent(key) + '=' + escape(encodeURIComponent(arguments[1][key])) + '&';
 			    	}
 			    }
 			    client.send(uri);
@@ -411,7 +411,7 @@
 			    	}
 			    };
 			    for (key in config.data) {
-			    	uri += encodeURIComponent(key) + '=' + encodeURIComponent(escape(config.data[key])) + '&';
+			    	uri += encodeURIComponent(key) + '=' + escape(encodeURIComponent(config.data[key])) + '&';
 			    }
 			    client.send(uri);
 			};
